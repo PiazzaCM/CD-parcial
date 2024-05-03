@@ -30,22 +30,11 @@ def calcular_promedio(data_frame, materia):
     promedio = dataframe_promedio['Fi'][12] / 12 
     return f"El promedio para la materia: {materia} es: {promedio}"
 
-#se imprime el promedio de matematicas, este puede ser cambiado para otra asignatura dada anteriormente
+#se imprime el promedio de las materias
 print(calcular_promedio(data_frame, 'matematicas'))
+print(calcular_promedio(data_frame, 'historia'))
+print(calcular_promedio(data_frame, 'ciencias'))
 
-
-# Función para calcular el porcentaje de estudiantes que aprobaron una materia específica.
-def porcentaje_aprobados(data_frame, materia):
-    # Creamos un nuevo DataFrame con los estudiantes que aprobaron la materia (calificación >= 60).
-    aprobados = data_frame[data_frame[materia] >= 60]
-    # Calculamos el porcentaje de estudiantes que aprobaron.
-    porcentaje = (len(aprobados) / len(data_frame)) * 100
-    return f'El porcentaje que aprobaron {materia} es de {porcentaje}%'
-
-#se imprime la calificación más alta de una materia y el alumno que la tiene, este puede ser cambiado para otra asignatura dada anteriormente
-print(porcentaje_aprobados(data_frame, 'matematicas'))
-print(porcentaje_aprobados(data_frame, 'historia'))
-print(porcentaje_aprobados(data_frame, 'ciencias'))
 
 # se define la funcion para encontrar la calificación más alta de una materia
 def encontrar_calf_mas_altas(data_frame, materia):
@@ -60,6 +49,19 @@ print(encontrar_calf_mas_altas(data_frame, 'matematicas'))
 print(encontrar_calf_mas_altas(data_frame, 'historia'))
 print(encontrar_calf_mas_altas(data_frame, 'ciencias'))
 
+# Función para calcular el porcentaje de estudiantes que aprobaron una materia específica.
+def porcentaje_aprobados(data_frame, materia):
+    # Creamos un nuevo DataFrame con los estudiantes que aprobaron la materia (calificación >= 60).
+    aprobados = data_frame[data_frame[materia] >= 60]
+    # Calculamos el porcentaje de estudiantes que aprobaron.
+    porcentaje = (len(aprobados) / len(data_frame)) * 100
+    return f'El porcentaje que aprobaron {materia} con mas del 60% es de es de {porcentaje}%'
+
+#se imprime la calificación más alta de una materia y el alumno que la tiene, este puede ser cambiado para otra asignatura dada anteriormente
+print(porcentaje_aprobados(data_frame, 'matematicas'))
+print(porcentaje_aprobados(data_frame, 'historia'))
+print(porcentaje_aprobados(data_frame, 'ciencias'))
+
 # Calculamos el promedio de las notas de las asignaturas para cada estudiante
 data_frame['Promedio'] = data_frame[['matematicas', 'ciencias', 'historia']].mean(axis=1)
 
@@ -67,5 +69,23 @@ data_frame['Promedio'] = data_frame[['matematicas', 'ciencias', 'historia']].mea
 promedio_notas = data_frame[['nombre', 'Promedio']]
 
 print(promedio_notas)
+
+
+#punto 3
+
+# Definimos los datos para el eje x e y
+x = promedio_notas['nombre']
+y = promedio_notas['Promedio']
+
+# Creamos el gráfico de barras
+plt.plot(x, y)
+
+# Añadimos títulos y etiquetas
+plt.title('Promedio de calificaciones por estudiante')
+plt.xlabel('Estudiantes')
+plt.ylabel('Promedio de calificaciones')
+
+# Mostramos el gráfico
+plt.show()
 
 
