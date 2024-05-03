@@ -78,7 +78,7 @@ x = promedio_notas['nombre']
 y = promedio_notas['Promedio']
 
 # Creamos el gráfico de barras
-plt.plot(x, y)
+plt.bar(x, y)
 
 # Añadimos títulos y etiquetas
 plt.title('Promedio de calificaciones por estudiante')
