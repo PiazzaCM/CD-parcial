@@ -1,7 +1,7 @@
 #se carga una lista de prueba
 lista = [1,5, 8, 3, 2, 3, 4, 4, 8, 5, 6, 6, 7]
 
-#se define la fincion 
+#se define la funcion 
 def eliminar_duplicados(lista):
 #validaciones de que la lista tenga datos 
     if not lista: 
