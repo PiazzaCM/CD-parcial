@@ -34,18 +34,6 @@ def calcular_promedio(data_frame, materia):
 print(calcular_promedio(data_frame, 'matematicas'))
 
 
-# se define la funcion para encontrar la calificación más alta de una materia
-def encontrar_calf_mas_altas(data_frame, materia):
-    # Creamos un nuevo DataFrame con los nombres de los estudiantes y sus calificaciones en la materia especificada.
-    order = pd.DataFrame(data_frame[['nombre', f'{materia}']])
-    # Ordenamos el DataFrame en orden descendente de calificaciones.
-    order.sort_values(by=f'{materia}', ascending=False, inplace=True)
-    # Devolvemos el nombre del estudiante con la calificación más alta y la calificación.
-    return "la calificación más alta es", order.iloc[0]['nombre'], "la materia es", order.iloc[0][f"{materia}"]
-
-#se imprime la calificación más alta de una materia y el alumno que la tiene, este puede ser cambiado para otra asignatura dada anteriormente
-print(encontrar_calf_mas_altas(data_frame, 'matematicas'))
-
 # Función para calcular el porcentaje de estudiantes que aprobaron una materia específica.
 def porcentaje_aprobados(data_frame, materia):
     # Creamos un nuevo DataFrame con los estudiantes que aprobaron la materia (calificación >= 60).
@@ -56,7 +44,21 @@ def porcentaje_aprobados(data_frame, materia):
 
 #se imprime la calificación más alta de una materia y el alumno que la tiene, este puede ser cambiado para otra asignatura dada anteriormente
 print(porcentaje_aprobados(data_frame, 'matematicas'))
+print(porcentaje_aprobados(data_frame, 'historia'))
+print(porcentaje_aprobados(data_frame, 'ciencias'))
 
+# se define la funcion para encontrar la calificación más alta de una materia
+def encontrar_calf_mas_altas(data_frame, materia):
+    # Creamos un nuevo DataFrame con los nombres de los estudiantes y sus calificaciones en la materia especificada.
+    order = pd.DataFrame(data_frame[['nombre', f'{materia}']])
+    # Ordenamos el DataFrame en orden descendente de calificaciones.
+    order.sort_values(by=f'{materia}', ascending=False, inplace=True)
+    # Devolvemos el nombre del estudiante con la calificación más alta y la calificación.
+    return f"La calificación más alta en {materia} es de {order.iloc[0]['nombre']}, con una calificación de {order.iloc[0][materia]}"
+#se imprime la calificación más alta de una materia y el alumno que la tiene, este puede ser cambiado para otra asignatura dada anteriormente
+print(encontrar_calf_mas_altas(data_frame, 'matematicas'))
+print(encontrar_calf_mas_altas(data_frame, 'historia'))
+print(encontrar_calf_mas_altas(data_frame, 'ciencias'))
 
 # Calculamos el promedio de las notas de las asignaturas para cada estudiante
 data_frame['Promedio'] = data_frame[['matematicas', 'ciencias', 'historia']].mean(axis=1)
@@ -65,7 +67,5 @@ data_frame['Promedio'] = data_frame[['matematicas', 'ciencias', 'historia']].mea
 promedio_notas = data_frame[['nombre', 'Promedio']]
 
 print(promedio_notas)
-
-#
 
 
